@@ -1,0 +1,180 @@
+body {
+    color: #082B48;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+    background-color: #FFFFEE;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #082B48;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 980px;
+    margin: auto;
+}
+
+.clear::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+input[type="password"] {
+    display: block;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+
+/****************************************************************
+header
+****************************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+
+header {
+    font-family: 'Sacramento', cursive;
+    height: 80px;
+    margin-bottom: 20px;
+    background-size: auto auto;
+    background-color: #243a4d;
+    box-shadow:rgb(0, 0, 0) 3px 3px 3px 0px;
+    opacity: 0.8;
+    color: white;
+}
+
+.title {
+    text-align: center;
+    line-height: 80px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/****************************************************************
+main
+****************************************************************/
+
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
+/****************************************************************
+main-left
+****************************************************************/
+
+.main-left {
+    width: 28%;
+}
+
+/****************************************************************
+comment-form
+****************************************************************/
+
+.comment-form {
+    background-color: #FFFFFF;
+    border:1px solid #082B48;
+    border-radius: 4px;
+    box-shadow:rgb(0, 0, 0) 3px 3px 3px 0px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-form-title {
+    text-align: center;
+    background-color: #DDDDDD;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/****************************************************************
+delete-form
+****************************************************************/
+
+.delete-form {
+    background-color: #FFFFFF;
+    border:1px solid #082B48;
+    border-radius: 4px;
+    box-shadow:rgb(0, 0, 0) 3px 3px 3px 0px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-form-title {
+    text-align: center;
+    background-color: #DDDDDD;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/****************************************************************
+edit-form
+****************************************************************/
+
+.edit-form {
+    background-color: #FFFFFF;
+    border:1px solid #082B48;
+    border-radius: 4px;
+    box-shadow:rgb(0, 0, 0) 3px 3px 3px 0px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-form-title {
+    text-align: center;
+    background-color: #DDDDDD;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/****************************************************************
+main-right
+****************************************************************/
+
+.main-right {
+    background-color: #FFFFFF;
+    width: 68%;
+    border:1px solid #082B48;
+    border-radius: 4px;
+    box-shadow:rgb(0, 0, 0) 3px 3px 3px 0px;
+    padding: 20px;
+}
+
+.main-right-title {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px #DDDDDD dashed;
+    font-weight: bold;
+}
+
+.comment {
+    padding: 0 40px;
+    font-size: 18px;
+}

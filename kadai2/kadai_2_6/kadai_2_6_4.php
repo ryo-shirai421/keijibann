@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>編集用</title>
-    <link rel="icon" href="favicon.ico">
 </head>
 <body>
     <?php
@@ -14,35 +13,28 @@
             echo "データが入力されていません。編集したい番号を入力してください。";
     ?>
         <br><button type="button" onclick="history.back()">戻る</button>
-    <?php 
+    <?php
         } else {
-            require 'connect.php';
+            $file_name = "test1.txt";
+            $ret_array = file($file_name);
+            for( $i = 0; $i < count($ret_array); ++$i ) {
+                $parts = explode("<>", $ret_array[$i]);
+                if($parts[0] == $edit_number) {
+                    $edit_name = $parts[1];
+                    $edit_comment = $parts[2];
+                    $edit_password = $parts[3];
+                }
+            }
+        }
 
-            $sql = "SELECT password FROM COMMENTS WHERE id = :id";
-            $stmt = $dbh->prepare($sql);
-            $params = array(':id'=> $_POST['edit_number']);
-            $stmt->execute($params);
-            $password = $stmt->fetch(PDO::FETCH_COLUMN);
-            if($password != $_POST['edit_password']) {
-                echo "入力されたパスワードが正しくありません。";
-                $dbh = null;
+        if($_POST['edit_password1'] != $edit_password) {
+            echo "誤ったパスワードです。";
     ?>
         <br><button type="button" onclick="history.back()">戻る</button>
     <?php
-            } else {
-                require 'connect.php';
-
-                $sql = "SELECT * FROM COMMENTS WHERE id = $edit_number";
-                $res = $dbh->query($sql);
-		        foreach( $res as $value ) {
-                    $edit_name = "$value[name]";
-                    $edit_comment = "$value[comment]";
-                    $edit_password = "$value[password]";
-                }
-
-                $dbh = null;
+        } else {
     ?>
-    <form action="index.php" method ="post">
+    <form action="kadai_2_6_1.php" method ="post">
         <input type="hidden" name="edit_name" value="<?php echo $edit_name?>">
         <input type="hidden" name="edit_comment" value="<?php echo $edit_comment?>">
         <input type="hidden" name="edit_number" value="<?php echo $edit_number?>">
@@ -51,8 +43,7 @@
         <input type="submit" value="編集する">
     </form>
     <?php
-            }
-        }   
+        }
     ?>
 </body>
 </html>

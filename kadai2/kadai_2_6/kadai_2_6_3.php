@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php 
-        if(isset($_POST['edit'])) {
+        if(($_POST['edit']) != "") {
             $_POST['edit'] = NULL;
             $edit_number = $_POST['edit_number'];
             $file_name = "test1.txt";
@@ -17,30 +17,34 @@
             for( $i = 0; $i < count($ret_array); ++$i ) {
                 $parts = explode("<>", $ret_array[$i]);
                 if($parts[0] == $edit_number) {
-                    $text = $edit_number."<>".$_POST['name']."<>".$_POST['comment']."<>".date('Y-m-d')."\n";
+                    $text = $edit_number."<>".$_POST['name']."<>".$_POST['comment']."<>".$_POST["password"]."<>".date('Y-m-d')."<>"."\n";
                     fwrite($fp_temp, $text);
                 } else {
-                    $text = $parts[0]."<>".$parts[1]."<>".$parts[2]."<>".date('Y-m-d')."\n";
+                    $text = $parts[0]."<>".$parts[1]."<>".$parts[2]."<>".$parts[3]."<>".$parts[4]."<>"."\n";
                     fwrite($fp_temp, $text);
                 }
             }
             fclose($fp_temp);
             copy("test2.txt", "test1.txt");
             ?>
-            <a href="kadai_2_5_1.php">書き込む</a>
+            <a href="kadai_2_6_1.php">書き込む</a>
             <?php
         } else {
     ?>
     <?php
             $fp = fopen("test1.txt", "a+");
-            for ($count=0; fgets($fp); $count++);
-            $comment_number = $count + 1;
-            $text = $comment_number."<>".$_POST["name"]."<>".$_POST["comment"]."<>".date('Y-m-d')."\n";
+            $file_name = "test1.txt";
+            $ret_array = file($file_name);
+            for( $i = 0; $i < count($ret_array); ++$i ) {
+                $parts = explode("<>", $ret_array[$i]);
+                $comment_number = $parts[0];
+            }
+            $comment_number++;
+            $text = $comment_number."<>".$_POST["name"]."<>".$_POST["comment"]."<>".$_POST["password"]."<>".date('Y-m-d')."<>"."\n";
             fwrite($fp, $text);
-            $count++;
             fclose($fp);
     ?>
-        <a href="kadai_2_5_1.php">コメント入力へ</a>
+        <a href="kadai_2_6_1.php">コメント入力へ</a>
     <?php
         }
     ?>
